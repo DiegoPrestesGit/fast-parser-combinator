@@ -1,23 +1,15 @@
-
 Compliance on AWS
 
 AWS communicates about its security and control environment to customers by:
 
 
-bullet
-Obtaining industry certifications and independent third-party attestations.
+=> Obtaining industry certifications and independent third-party attestations.
 
+=> Publishing information about AWS security and control practices in whitepapers and website content.
 
-bullet
-Publishing information about AWS security and control practices in whitepapers and website content.
+=> Providing certificates, reports, and other documentation directly to AWS customers under an NDA (as required).
 
-
-bullet
-Providing certificates, reports, and other documentation directly to AWS customers under an NDA (as required).
-
-
-bullet
-Providing security features and enablers, including compliance playbook and mapping documents for compliance programs.
+=> Providing security features and enablers, including compliance playbook and mapping documents for compliance programs.
 
 NOTE: Running your workloads on AWS does not automatically make the workload compliant. It is your responsibility to ensure that your workload meets all the requirements established in the compliance standard. However, AWS is already certified for its infrastructure, so you only have to certify the applications and architectures you create.
 
