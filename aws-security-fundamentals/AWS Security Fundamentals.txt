@@ -1,0 +1,44 @@
+Learning Objectives
+
+By the end of this course, you will learn how to:
+
+
+=> Identify security benefits and responsibilities when using the AWS Cloud.
+
+
+=> Describe the access control and management features of AWS.
+
+
+=> Identify the different data protection services to secure sensitive data.
+
+
+=> Describe how network access to your AWS resources can be secured.
+
+
+=> Determine the AWS services used for security logging and monitoring.
+
+Design Principles
+
+In the cloud, there are a number of principles that can help you strengthen your security. Use the principles described below to help guide your conversation around security and compliance.
+
+Implement a strong identity foundation: Implement the principle of least privilege and enforce separation of duties with appropriate authorization for each interaction with your AWS resources.
+
+Enable traceability: Monitor, alert, and audit actions and changes to your environment in real time. Integrate logs and metrics with systems to automatically respond and take action.
+
+Apply security at all layers: Rather than just focusing on protection of a single outer layer, apply a defense-in-depth approach with other security controls.
+
+Automate security best practices: Automated software-based security mechanisms improve your ability to securely scale more rapidly and cost effectively. Implement controls that are defined and managed as code in version-controlled templates.
+
+Protect data in transit and at rest: Classify your data into sensitivity levels and where appropriate, use mechanisms like encryption and access control.
+
+Enforce the principle of least privilege: Access to data should only be granted to the people who really need that access. Start with denying access to everything and grant access as needed.
+
+Prepare for security events: Prepare for an incident by having an incident management process that aligns to your organizational requirements. Run incident response simulations and use tools with automation to increase your speed for detection, investigation, and recovery.
+
+AWS Shared Responsibility Model
+
+AWS is responsible for protecting the global infrastructure that runs all of the services offered in the AWS Cloud. This infrastructure comprises the hardware, software, networking, and facilities that run AWS services.
+
+As an AWS customer, you are responsible for securing your data, operating systems, networks, platforms, and other resources that you create in the AWS Cloud. You are responsible for protecting the confidentiality, integrity, and availability of your data and for meeting any specific business and/or compliance requirements for your workloads.
+
+In this course, we will look at how AWS deals with security OF the cloud, and how you can take care of security IN the cloud.
