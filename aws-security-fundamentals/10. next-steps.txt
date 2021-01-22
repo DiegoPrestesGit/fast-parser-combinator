@@ -1,0 +1,1 @@
+Once you have completed this course, your next steps should be to attend the Architecting on AWS and Security Engineering on AWS instructor-led courses, in that order.  The services and concepts that were introduced to you here will be discussed in more detail in these two courses.
