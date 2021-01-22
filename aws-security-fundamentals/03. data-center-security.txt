@@ -1,0 +1,31 @@
+The AWS global infrastructure is designed and managed according to security best practices and a variety of security compliance standards. As an AWS customer, you can be assured that you are building solutions supported by one of the most secure computing infrastructures in the world. 
+
+NOTE: Customers can't visit AWS data centers to see how they are secured, but AWS engages with external certifying bodies and independent auditors to provide customers with considerable information regarding the policies, processes, and controls established and operated by AWS.
+
+Perimeter Layer: AWS data center physical security starts at the perimeter layer.
+
+Buildings: AWS data centers are housed in nondescript, undisclosed facilities;
+
+Surveillance: Professional security stuff use video surveillance, intrusion detector, access log monitoring systems, and other electronic means. Entrances are secured with devices that sound alarms if a door is forced or held open;
+
+Principle of Least Privilege: AWS limits access to pre-approved areas and only provides data center access and information to employees and contractors who leitimate business need for such privileges;
+
+Employee Scrutinization: Only AWS employees who routinely need access are given permissions to relevant areas of the ffacility based on job function. If an employee doesn't have an ongoing business need to be at a data center, they have to go through the visitor process and have an escort assigned throughout the duration of their visit.
+
+Environmental Layer: AWS carefully chooses their data center locations to mitigate environmental risks like flooding, extreme weather, and seismic activity.
+
+=> Customers requiring high availability and performance can deploy their applications across multiple Availability Zones in the same region for fault tolerance and low latency.
+
+=> To mitigate and prepare for the unexpected, AWS tests their Business Continuity Plan regularly with drills that simulate different scenarios.
+
+=> Companies generally use 77% fewer servers, 84% less power, and tap into a 28% cleaner mix of solar and wind power in the AWS Cloud versus their own traditional data centers.
+
+Infrastructure Layer: Components like backup power equipment, the HVAC system, and fire suppression equipment are all part of the Infrastructure Layer and help protect servers and ultimately your data.
+
+Data Layer: Even though protecting your data is ultimately your responsibility in the cloud, AWS takes extra precautions to protect the media that your data lives on.
+
+=> Storage devices are decommissioned by using NIST800-88 techniques to destroy customer data.
+
+=> AWS is audited by external auditors who inspect our data centers and confirm that we are following established rules needed to obtain our security certifications.
+
+=> AWS servers can notify employees of any attempts to remove data. In the unlikely event of a breach, the server is automatically disabled.
