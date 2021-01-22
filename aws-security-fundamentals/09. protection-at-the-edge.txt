@@ -1,0 +1,9 @@
+Protection at the Edge
+
+A combination of AWS services may be used to implement a defense in depth strategy when it comes to DDoS attacks. These services are designed with an automatic response to DDoS attacks and can help minimize time to mitigate and reduce impact. AWS Edge locations provide an additional layer of network infrastructure that increases your ability to absorb DDoS attacks and to isolate faults while minimizing availability impact. 
+Edge locations are physical data centers located in key cities, that are different from Availability Zones. As access to certain data increases with time, this data is copied to an edge location near your customer base for better performance and latency. Threats can then be taken care of at these edge locations, away from your web applications, AWS resources, and the original data.
+
+AWS Services for Out-of-Region Protection
+The AWS services listed below work seamlessly together to create a flexible, layered security perimeter against multiple types of DDoS attacks. All of these services reside at the AWS Edge and provide a scalable, reliable, and high-performance security perimeter for your applications and content. 
+
+
