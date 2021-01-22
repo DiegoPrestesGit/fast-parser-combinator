@@ -1,0 +1,7 @@
+Capturing and Collecting Logs
+
+Detective controls are an essential part of governance frameworks and can be used to identify a potential security threat or incident. In AWS, there are a number of approaches to consider when addressing detective controls. AWS CloudTrail records API calls made on your account. This information helps you track changes made to your AWS resources, troubleshoot operational issues, and ensure compliance with internal policies and regulatory standards.
+
+Auditing on AWS
+
+The AWS Management Console, along with the AWS CLI, can produce powerful results for auditors across multiple regulatory, standards, and industry authorities. The key services to audit include Amazon S3, Elastic Load Balancing, Amazon CloudWatch, AWS CloudTrail, and Amazon VPC.  View each flashcard below for more information.
