@@ -13,6 +13,7 @@ _build/
 
 # ocamlbuild targets
 *.byte
+*.bytes
 *.native
 
 # oasis generated files
