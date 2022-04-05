@@ -6,15 +6,21 @@ type section = {
   pairs: pair list;
 }
 
+let show_pair ((key, value): pair): string = Printf.sprintf "(%s, %s)" key value
+
 let show_pairs (pairs: pair list): string =
   pairs
   |> List.map show_pair
   |> String.concat ","
+  |> Printf.sprintf "[%s]"
 
-let show_section (sec: section): string = Printf.printf "{name = %s; pairs = %s}" sec.name (show_pairs sec.pairs)
+let show_section (sec: section): string =
+  Printf.sprintf "{name = %s; pairs = %s}"
+    sec.name
+    (show_pairs sec.pairs)
 
 let show_sections (sections: section list) = sections
-  |> List.map show_sections
+  |> List.map show_section
   |> String.concat ","
   |> Printf.sprintf "[%s]"
 
