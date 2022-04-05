@@ -5,6 +5,7 @@ without dependencies.
 ## TESTING
 
 - using opam's ``utop`` to mess around with the parser;
+- ``make -B ini.bytes`` to build it to byte code, other build methods in the ``Makefile``
 
 ## REFERENCE
 
