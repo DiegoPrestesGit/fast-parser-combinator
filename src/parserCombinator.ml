@@ -54,15 +54,18 @@ let prefix (prefix_str: string): string parser =
 
 let ( *> ) (p1: 'a parser) (p2: 'b parser): 'b parser =
   { run = fun input ->
-    match p1.run input with
-    | Ok (input', _) -> p2.run input'
-    | Error error -> Error error
+  input
+  |> p1.run
+  |> Result.map (fun (input', _) -> p2.run input')
+  |> Result.join
   }
 let ( <* ) (p1: 'a parser) (p2: 'b parser): 'b parser =
   { run = fun input ->
-      match p1.run input with
-      | Ok (input', x) -> p2.run input'
-        |> Result.map (fun (input, _) -> (input, x))
-      | Error error -> Error error
+    input
+    |> p1.run
+    |> Result.map (fun (input', x) ->
+        p2.run input'
+        |> Result.map (fun (input, _) -> (input, x)))
+    |> Result.join
   }
 let ( <*> ) (p1: 'a parser) (p2: 'b parser): 'b parser = failwith "TODO"
