@@ -34,8 +34,24 @@ let bind (f: 'a -> 'b parser) (p: 'a parser): 'b parser =
       | Error error -> Error error
   }
 
-(* let prefix (s: string): string parser =
+let prefix (prefix_str: string): string parser =
   { run = fun input ->
-      let n = String.length s in
-      String.sub input. 0 n
-  } *)
+      let unexpected_prefix_error =
+        Error { pos = input.pos;
+        desc = Printf.sprintf "Expected `%s`" prefix_str
+      } in
+      try
+        let prefix_size = String.length prefix_str in
+        let input_size = String.length input.text in
+        let prefix = input |> input_sub 0 prefix_size in
+        if prefix.text == prefix_str then
+          let rest = input |> input_sub prefix_size (input_size - prefix_size) in
+          Ok (rest, prefix_str)
+        else
+          Error
+            { pos = input.pos;
+              desc = Printf.sprintf "Expected `%s`" prefix_str
+            }
+      with
+        Invalid_argument _ -> unexpected_prefix_error
+  }
