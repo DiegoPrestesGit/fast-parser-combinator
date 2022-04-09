@@ -78,3 +78,10 @@ let ( <*> ) (p1: 'a parser) (p2: 'b parser): ('a * 'b) parser =
         |> Result.map (fun (input, y) -> (input, (x, y))))
         |> Result.join
   }
+
+let (<|>) (p1: 'a parser) (p2: 'a parser): 'a parser =
+  { run = fun input ->
+      match p1.run input with
+      | Ok (input', x) -> Ok(input', x)
+      | Error _ -> p2.run input
+  }
