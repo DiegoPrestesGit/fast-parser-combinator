@@ -68,4 +68,13 @@ let ( <* ) (p1: 'a parser) (p2: 'b parser): 'b parser =
         |> Result.map (fun (input, _) -> (input, x)))
     |> Result.join
   }
-let ( <*> ) (p1: 'a parser) (p2: 'b parser): 'b parser = failwith "TODO"
+let ( <*> ) (p1: 'a parser) (p2: 'b parser): ('a * 'b) parser =
+  { run = fun input ->
+      input
+      |> p1.run
+      |> Result.map (fun (input', x) ->
+        input'
+        |> p2.run
+        |> Result.map (fun (input, y) -> (input, (x, y))))
+        |> Result.join
+  }
