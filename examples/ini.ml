@@ -24,8 +24,6 @@ let show_sections (sections: section list) = sections
   |> String.concat ","
   |> Printf.sprintf "[%s]"
 
-let ini: section list ParserCombinator.parser = ParserCombinator.fail {desc = "not implemented yet"; pos = 0;}
-
 let read_whole_file (file_path: string): string =
   let ch = open_in file_path in
   let n = in_channel_length ch in
@@ -33,16 +31,20 @@ let read_whole_file (file_path: string): string =
   close_in ch;
   s
 
-let () =
+let section_name: string ParserCombinator.parser =
+  let open ParserCombinator in
+  prefix "[" *> parse_while (fun x -> x != ']') <* prefix "]"
+
+(* let () =
   let result = "./test.ini"
                |> read_whole_file
-               |> ParserCombinator.make_input
-               |> ini.run
-  in
+               |> ParserCombinator.make_input *)
+               (* |> ini.run *)
+  (* in
   match result with
     | Ok (_, sections) -> sections
                           |> show_sections
                           |> print_endline
     | Error error -> Printf.printf "Error happened at %d: %s"
                                     error.pos
-                                    error.desc
+                                    error.desc *)
