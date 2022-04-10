@@ -35,6 +35,24 @@ let section_name: string ParserCombinator.parser =
   let open ParserCombinator in
   prefix "[" *> parse_while (fun x -> x != ']') <* prefix "]"
 
+let white_spaces: string ParserCombinator.parser =
+  let open ParserCombinator in
+  parse_while (fun x -> x == ' ')
+
+let pair_parser: pair ParserCombinator.parser =
+  let open ParserCombinator in
+  let name = parse_while (fun x -> x != ' ' && x != '=') in
+  (white_spaces *> name <* white_spaces <* prefix "=" <* white_spaces) <*> name
+
+let section_parser: section ParserCombinator.parser =
+  let open ParserCombinator in
+  section_name <*> many pair_parser
+  |> map (fun (s, ps) -> {name = s; pairs = ps})
+
+let ini_parser: section list ParserCombinator.parser =
+  let open ParserCombinator in
+  many section_parser
+
 (* let () =
   let result = "./test.ini"
                |> read_whole_file
