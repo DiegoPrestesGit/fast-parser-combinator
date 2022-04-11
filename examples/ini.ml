@@ -1,23 +1,23 @@
+open ParserCombinator
+
 type key = string
-type value = string
-type pair = key * value
+type value_t = string
+type pair_t = key * value_t
 type section = {
   name: string;
-  pairs: pair list;
+  pairs: pair_t list;
 }
 
-let show_pair ((key, value): pair): string = Printf.sprintf "(%s, %s)" key value
+let show_pair ((key, value_t): pair_t): string = Printf.sprintf "(%s, %s)" key value_t
 
-let show_pairs (pairs: pair list): string =
+let show_pairs (pairs: pair_t list): string =
   pairs
   |> List.map show_pair
   |> String.concat ","
   |> Printf.sprintf "[%s]"
 
 let show_section (sec: section): string =
-  Printf.sprintf "{name = %s; pairs = %s}"
-    sec.name
-    (show_pairs sec.pairs)
+  Printf.sprintf "{name = %s; pairs = %s}" sec.name (show_pairs sec.pairs)
 
 let show_sections (sections: section list) = sections
   |> List.map show_section
@@ -31,32 +31,27 @@ let read_whole_file (file_path: string): string =
   close_in ch;
   s
 
-let section_name: string ParserCombinator.parser =
-  let open ParserCombinator in
+let section_name: string parser =
   prefix "[" *> parse_while (fun x -> x != ']') <* prefix "]"
 
-let white_spaces: string ParserCombinator.parser =
-  let open ParserCombinator in
+let white_spaces: string parser =
   parse_while (fun x -> x == ' ')
 
-let pair_parser: pair ParserCombinator.parser =
-  let open ParserCombinator in
+let pair: pair_t parser =
   let name = parse_while (fun x -> x != ' ' && x != '=') in
   (white_spaces *> name <* white_spaces <* prefix "=" <* white_spaces) <*> name
 
-let section_parser: section ParserCombinator.parser =
-  let open ParserCombinator in
-  section_name <*> many pair_parser
+let section: section parser =
+  section_name <*> many pair
   |> map (fun (s, ps) -> {name = s; pairs = ps})
 
-let ini_parser: section list ParserCombinator.parser =
-  let open ParserCombinator in
-  many section_parser
+let ini: section list parser =
+  many section
 
 (* let () =
   let result = "./test.ini"
                |> read_whole_file
-               |> ParserCombinator.make_input *)
+               |> make_input *)
                (* |> ini.run *)
   (* in
   match result with
