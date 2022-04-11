@@ -36,6 +36,8 @@ let section_name: string parser =
 
 let  is_space (x: char) = x == ' ' || x == '\n'
 
+let comments: string parser = prefix ";" *> parse_while (fun x -> x != '\n')
+
 let white_spaces: string parser =
   parse_while is_space
 
@@ -50,16 +52,15 @@ let section: section parser =
 let ini: section list parser =
   many section
 
-(* let () =
-  let result = "./test.ini"
-               |> read_whole_file
-               |> make_input *)
-               (* |> ini.run *)
-  (* in
-  match result with
-    | Ok (_, sections) -> sections
-                          |> show_sections
-                          |> print_endline
-    | Error error -> Printf.printf "Error happened at %d: %s"
-                                    error.pos
-                                    error.desc *)
+let () =
+  match Sys.argv |> Array.to_list with
+  | _ :: file_path :: _ ->
+    let result = file_path
+    |> read_whole_file
+    |> make_input
+    |> ini.run
+  in
+    (match result with
+    | Ok (_, sections) -> sections |> show_sections |> print_endline
+    | Error error -> Printf.printf "Error during parsing at position %d: %s" error.pos error.desc)
+  | _ -> failwith "expected path to an ini file"
