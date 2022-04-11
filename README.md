@@ -2,11 +2,15 @@
 
 without dependencies.
 
-## TESTING
+## QUICK START
 
-- using opam's ``utop -I examples/ -I src/`` to mess around with the parser;
-- ``make -B ini.bytes`` to build it to byte code, other build methods in the ``Makefile``
+````
+$ make
+$ ./ini ./examples/example.ini
+
+````
 
 ## REFERENCE
 
 - the idea comes from [this whitepaper](https://www.cs.nott.ac.uk/~pszgmh/monparsing.pdf) about Monadic Parser Combinators
+- [this guy](https://github.com/tsoding) also did a video about this implementation
