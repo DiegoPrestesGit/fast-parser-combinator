@@ -34,12 +34,14 @@ let read_whole_file (file_path: string): string =
 let section_name: string parser =
   prefix "[" *> parse_while (fun x -> x != ']') <* prefix "]"
 
+let  is_space (x: char) = x == ' ' || x == '\n'
+
 let white_spaces: string parser =
-  parse_while (fun x -> x == ' ')
+  parse_while is_space
 
 let pair: pair_t parser =
-  let name = parse_while (fun x -> x != ' ' && x != '=') in
-  (white_spaces *> name <* white_spaces <* prefix "=" <* white_spaces) <*> name
+  let name = parse_while (fun x -> not (is_space x) && x != '=') in
+  (white_spaces *> name <* white_spaces <* prefix "=" <* white_spaces) <*> (name <* white_spaces)
 
 let section: section parser =
   section_name <*> many pair
